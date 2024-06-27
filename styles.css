@@ -1,0 +1,9 @@
+h1 {
+    text-align: left;
+    color: rgb(136, 136, 255);
+    font-style: italic;
+}
+
+button {
+    background-color: rgb(211, 206, 206);
+}

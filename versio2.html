@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaverit</title>
+
+</head>
+<body>
+    <form name="kaverit" onsubmit="return false;">
+        <h1>Kaverit</h1>
+        <input type="text" name="nimi" id="nimi">
+        <button type="button" onclick="lisaaNimi()">Lähetä</button>
+        <button type="button" onclick="poistaViimeinenNimi()">Poista</button>
+        <button type="button" onclick="jarjestaNimet()">Järjestä</button>
+    </form>
+    <ul id="kaveriLista"></ul>
+
+    <script>
+        function lisaaNimi() {
+            let nimiInput = document.getElementById('nimi');
+            let nimi = nimiInput.value.trim();
+
+            if (nimi === "") {
+                alert("Anna nimi.");
+                return;
+            }
+
+            let kaveriLista = document.getElementById('kaveriLista');
+            let li = document.createElement('li');
+            li.textContent = nimi;
+            kaveriLista.appendChild(li);
+
+            nimiInput.value = "";
+        }
+
+        function poistaViimeinenNimi() {
+            let kaveriLista = document.getElementById('kaveriLista');
+            let viimeinenNimi = kaveriLista.lastElementChild;
+
+            if (viimeinenNimi) {
+                kaveriLista.removeChild(viimeinenNimi);
+            } else {
+                alert("Ei poistettavaa nimeä.");
+            }
+        }
+
+        function jarjestaNimet() {
+            let kaveriLista = document.getElementById('kaveriLista');
+            let lapset = Array.from(kaveriLista.getElementsByTagName('li'));
+
+            lapset.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+            kaveriLista.innerHTML = "";
+            lapset.forEach(li => kaveriLista.appendChild(li));
+        }
+    </script>
+</body>
+</html>

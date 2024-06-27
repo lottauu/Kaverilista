@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <a href="versio2.html">Versio 2</a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Versio 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+<ul id="kaverilista"></ul>
+
+<script>
+    function PromptNimet(Maara) {
+        let nimet = [];
+
+        for (let i = 0; i < Maara; i++) {
+            let nimi = prompt('Syötä nimi');
+
+        nimet.push(nimi);
+        }
+        return nimet;
+    }
+
+    let Maara = 10;
+
+    let kaverilista = PromptNimet(Maara);
+
+    let listElement = document.getElementById('kaverilista');
+    for (let i = 0; i < kaverilista.length; i++) {
+        let listItem = document.createElement('li');
+        listItem.textContent = `${i + 1}. ${kaverilista[i]}`;
+        listElement.appendChild(listItem);
+    }
+    </script>
+    
+</body>
+</html>
